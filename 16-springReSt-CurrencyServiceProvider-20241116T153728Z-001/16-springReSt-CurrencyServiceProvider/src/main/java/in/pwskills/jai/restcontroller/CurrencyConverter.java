@@ -1,6 +1,5 @@
-package in.pwskills.nitin.restcontroller;
+package in.pwskills.jai.restcontroller;
 
-import org.springframework.http.HttpStatus; 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.pwskills.nitin.response.CurrencyResponse;
-//http://localhost:9999/v1/api/currency/convertFromUSDToINR/from/USD/to/INR
+//http://localhost:9999/v1/api/currency/convert/from/USD/to/INR
 @RestController
 @RequestMapping("/v1/api/currency")
 public class CurrencyConverter  {
@@ -23,6 +22,7 @@ public class CurrencyConverter  {
     public ResponseEntity<CurrencyResponse> convertCurrencyData(
             @PathVariable String from,
             @PathVariable String to) {
+    	System.out.println("in controller");
         
         // Simulating currency conversion
         CurrencyResponse response = new CurrencyResponse();
@@ -30,6 +30,7 @@ public class CurrencyConverter  {
         response.setCurrencyFrom(from);
         response.setCurrencyTo(to);
         response.setCurrencyValue(83); // Example conversion value
+       
 
         // Simulate processing time (optional, not recommended for production)
        
