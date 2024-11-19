@@ -1,5 +1,5 @@
 package com.webClient.jai.RestController;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus; 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,38 +14,41 @@ import com.webClient.jai.response.Ticket;
 @RestController
 @RequestMapping("/v1/api/railway")
 public class ERailResource {
+
 	/*
 	 * METHOD : POST
-	 * INPUT  : PassengerDetails(@RequestBody)
-	 * OutPut : TIcketObject(Json)
-	 * input  : "/createTicket"
-
+	 * INPUT  : PassengerDetails (@RequestBody)
+	 * OUTPUT : Ticket(JSON)
+	 * URL    : /createTicket
+	 * 
 	 */
 	@PostMapping("/createTicket")
-	public ResponseEntity<Ticket> bookTickets(@RequestBody PassengerInfo info) {
-	    // Current date for booking
-	   
-
-	    Ticket t = new Ticket();
-	    t.setTicketId("TAjnwaf008");               // Assuming ticket ID will be auto-generated or handled differently
-	    t.setTicketStatus("CNF");                // Setting ticket status
-	    t.setJourneyDate(info.getJourneyDate()); // Assuming info.getJourneyDate() returns a Date object
-	    t.setTrainNumber(info.getTrainNumber()); // Assuming train number is already set in PassengerInfo
-	    t.setTicketPrice(350.00);                // Static ticket price, consider making it dynamic
-	    t.setFrom(info.getFrom());               // Setting source station
-	    t.setTo(info.getTo());                   // Setting destination station
-	    t.setPassengerName(info.getFirstName() + info.getLastName());
-	    
-	    try {
-			Thread.sleep(7000);
-		} catch (Exception e) {
-			// TODO: handle exception
+	public ResponseEntity<Ticket> bookTicket(
+			@RequestBody PassengerInfo pinfo
+			)
+	{
+		
+		//Creating a ticket object
+		Ticket body = new Ticket();
+		
+		//Setting the ticket object data
+		body.setTicketId("TA02899");
+		body.setTicketStatus("CONFIRMED");
+		body.setJourneyDate(pinfo.getJourneyDate());
+		body.setPassengerName(pinfo.getFirstName() + " " + pinfo.getLastName());
+		body.setTrainNumber(pinfo.getTrainNumber());
+		body.setTicketPrice(350.00);
+		body.setFrom(pinfo.getFrom());
+		body.setTo(pinfo.getTo());
+		
+		
+		try {
+			//sleeping for 30sec
+			Thread.sleep(4000);
+		}catch(Exception e) {
+			
 		}
-
-	    // Return the created ticket object with HTTP status 201 (CREATED)
-	    return new ResponseEntity<Ticket>(t,HttpStatus.CREATED);
-	}
-
-
-	
+		
+		return new ResponseEntity<Ticket>(body, HttpStatus.CREATED);
+	}	
 }

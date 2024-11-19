@@ -1,4 +1,4 @@
-package com.webClient.jai.request;
+package com.webclient.jai.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,4 +14,5 @@ public class PassengerInfo {
 	private String lastName;
 	private String to;
 	private String trainNumber;
+	
 }

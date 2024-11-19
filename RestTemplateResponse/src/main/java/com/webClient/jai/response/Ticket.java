@@ -16,6 +16,5 @@ public class Ticket {
 	private String ticketStatus;
 	private String to;
 	private String trainNumber;
-	
 
 }

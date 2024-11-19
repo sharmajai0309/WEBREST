@@ -30,6 +30,12 @@ public class CurrencyConverter  {
         response.setCurrencyFrom(from);
         response.setCurrencyTo(to);
         response.setCurrencyValue(83); // Example conversion value
+        try {
+        	System.out.println("in Sleep");
+			Thread.sleep(4000);
+		} catch (Exception e) {
+			System.out.println("in Catch");
+		}
        
 
         // Simulate processing time (optional, not recommended for production)

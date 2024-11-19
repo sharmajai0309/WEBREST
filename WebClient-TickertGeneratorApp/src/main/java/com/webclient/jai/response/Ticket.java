@@ -1,17 +1,21 @@
-package com.webClient.jai.request;
+package com.webclient.jai.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PassengerInfo {
-	
-	private String firstName;
+public class Ticket {
 	private String from;
 	private String journeyDate;
-	private String lastName;
+	private String passengerName;
+	private String ticketId;
+	private Double ticketPrice;
+	private String ticketStatus;
 	private String to;
 	private String trainNumber;
+	
+
 }
